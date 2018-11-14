@@ -1,4 +1,5 @@
-<!Doctype <!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,9 +11,65 @@
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+   
 </head>
 <body>
+    <div class = "container col-md-12">
+        <div class="row">
+            <div id="Wins" class="bg-light">
+            </div>
+            <div id="Losses" class="bg-dark">
+            </div>
+        </div>
+        <div class="row bg-light">
+            <h1 id="mysteryWord"></h1>
+        </div>
+        <div class="row bg-info" id="guesses">            
+        </div>
+    </div>
+    <script>
+        var wordList = ["marsh", "build", "range", "fraction", "mother", "dermatoglyphics", "last", "fine"];  
+        var lettersGuessed = [];
+        var misses =[];
+        var wins = 0;
+        var losses = 0;
+        var gameStart = false;
+        var gameOver = false;
+        var word;
+        var blanks=[];
+       
+
+        function reset(){
+            misses = [];
+            lettersGuesses = [];
+            gameStart = true;
+            rand = Math.floor(Math.random()*wordList.length);
+            word = wordList[rand];
+            for (let i = 0; i < wordList[rand].length; i++){
+                blanks.push("_ ");
+                            };
+            
+                $("#mysteryWord").text(blanks);
+              
+
+        };
+
+                reset();
+        document.onkeyup=function(event){
+            if (event.keyCode >= 65 && event.keyCode <= 90){
+                event.key.toLowerCase();
+                if (event.indexOf(lettersGuessed) == -1){
+                    lettersGuessed.push();
+                    console.log(lettersGuessed);
+                };
+                
+            };
+        };
+                console.log(word);
+                console.log(blanks);
+                
+    
+    </script>
     
 </body>
 </html>
